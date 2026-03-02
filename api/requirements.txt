@@ -1,0 +1,8 @@
+fastapi==0.109.0
+uvicorn==0.27.0
+pydantic==2.5.3
+torch
+transformers
+tokenizers
+# 추후 부하 테스트 및 메트릭 수집을 위해 추가 고려
+# prometheus_client

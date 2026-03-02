@@ -1,0 +1,8 @@
+__pycache__
+venv
+.git
+.github
+docs
+tests
+*.md
+.DS_Store
