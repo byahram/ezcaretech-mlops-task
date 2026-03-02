@@ -3,12 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 venv/
+.pytest_cache/
+
+# Model Weights
+api/model/
+
+# Environments
 .env
 
-# Model weights & Cacheㄴ
-models/
-.cache/
-huggingface/
-
-# OS
-.DS_Store
+# Docker/Monitoring
+monitoring/data/  
