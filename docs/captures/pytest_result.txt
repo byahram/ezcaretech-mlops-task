@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/ahramkim/Documents/GitHub/ezcaretech-mlops-task
+plugins: anyio-4.12.1
+collected 2 items
+
+tests/test_api.py ..                                                     [100%]
+
+============================== 2 passed in 5.23s ===============================
