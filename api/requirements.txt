@@ -7,4 +7,4 @@ tokenizers
 prometheus_client
 # --- 테스트용 패키지 추가 ---
 pytest
-httpx
+httpx<0.28.0
