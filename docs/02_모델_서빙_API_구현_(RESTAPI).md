@@ -22,4 +22,4 @@
 - **테스트 결과**: 정상적으로 `Positive` 반환 (처리 속도 약 8ms)
 
 *(아래는 로컬에서 직접 구동 후 Swagger UI에서 테스트해본 화면 캡처입니다.)*
-> ![swagger_ui_capture.png](captures/api 성공.png)
+> ![swagger_ui_capture.png](captures/api.png)

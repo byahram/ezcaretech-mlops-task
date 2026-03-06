@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-api-deployment
+  labels:
+    app: ml-api
+spec:
+  replicas: 2 # 고가용성을 위해 최소 2개의 파드 유지
+  selector:
+    matchLabels:
+      app: ml-api
+  strategy:
+    type: RollingUpdate # 무중단 배포 전략
+    rollingUpdate:
+      maxSurge: 1 # 배포 시 최대로 뜰 수 있는 여유 파드 수
+      maxUnavailable: 0 # 배포 도중 죽어있어도 되는 파드 수 (0이면 다운타임 없음)
+  template:
+    metadata:
+      labels:
+        app: ml-api
+    spec:
+      containers:
+      - name: ml-api-container
+        image: ezcaretech/ml-api:latest # CI 파이프라인에서 빌드한 이미지 명
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "250m" # 최소 CPU 0.25 코어
+            memory: "512Mi" # 최소 512MB
+          limits:
+            cpu: "1000m" # 최대 1 코어 (과점유 방지)
+            memory: "1Gi" # 최대 1GB (OOM 방지)
+        livenessProbe:
+          httpGet: # 살아있는지 체크
+            path: /health
+            port: 8000
+          initialDelaySeconds: 15 # 앱 뜰 때까지 15초 대기
+          periodSeconds: 10 # 10초마다 찌름
+        readinessProbe: # 트래픽 받을 준비가 됐는지 체크
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 5

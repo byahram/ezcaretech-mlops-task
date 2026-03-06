@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml-api-service
+  labels:
+    app: ml-api
+spec:
+  type: ClusterIP # 클러스터 내부 오픈용 (실제 외부 오픈 시 Ingress 사용 권장)
+  selector:
+    app: ml-api
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 8000 
